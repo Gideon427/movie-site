@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom';
 import './styles/globals.css';
 import Home from './pages/Home';
+import Movies from './pages/Movies';
+import Series from './pages/Series';
+import Genres from './pages/Genres';
 import MovieDetail from './pages/MovieDetail';
 import Player from './pages/Player';
 import Search from './pages/Search';
@@ -48,6 +51,9 @@ function AppContent() {
       <main>
         <Routes>
           <Route path="/" element={<Home onMovieSelect={handleMovieSelect} />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/series" element={<Series />} />
+          <Route path="/genres" element={<Genres />} />
           <Route path="/movie/:id" element={<MovieDetail movie={selectedMovie} />} />
           <Route path="/player/:id" element={<Player movie={selectedMovie} />} />
           <Route path="/search" element={<Search />} />

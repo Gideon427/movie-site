@@ -1,12 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import { FaChevronRight } from 'react-icons/fa';
 import MovieCard from './MovieCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './MovieCarousel.css';
 
-const MovieCarousel = ({ title, movies, onMovieClick }) => {
+const MovieCarousel = ({ title, movies, onMovieClick, autoplay = false }) => {
   if (!movies || movies.length === 0) return null;
 
   return (
@@ -18,11 +18,13 @@ const MovieCarousel = ({ title, movies, onMovieClick }) => {
         </button>
       </div>
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         navigation
         spaceBetween={16}
         slidesPerView={2.5}
+        autoplay={autoplay ? { delay: 3000, disableOnInteraction: true } : false}
         breakpoints={{
+          480: { slidesPerView: 2.5 },
           640: { slidesPerView: 3.5 },
           768: { slidesPerView: 4.5 },
           1024: { slidesPerView: 5.5 },

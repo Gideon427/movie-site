@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import MovieCarousel from '../components/MovieCarousel';
+import { FaStar, FaClock, FaPlay, FaYoutube, FaFilm } from 'react-icons/fa';
 import './MovieDetail.css';
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -43,7 +44,6 @@ const MovieDetail = () => {
     fetchMovieDetails();
   }, [id]);
 
-  // Format runtime
   const formatRuntime = (minutes) => {
     if (!minutes) return 'N/A';
     const hrs = Math.floor(minutes / 60);
@@ -51,7 +51,6 @@ const MovieDetail = () => {
     return hrs > 0 ? `${hrs}h ${mins}m` : `${mins}m`;
   };
 
-  // Get trailer key
   const getTrailerKey = () => {
     if (movie?.videos?.results) {
       const trailer = movie.videos.results.find(
@@ -85,15 +84,18 @@ const MovieDetail = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Backdrop background (blurred) */}
       <div
         className="movie-detail-backdrop"
-        style={{ backgroundImage: `url(${BACKDROP_URL}${movie.backdrop_path})` }}
+        style={{
+          backgroundImage: movie.backdrop_path
+            ? `url(${BACKDROP_URL}${movie.backdrop_path})`
+            : 'none',
+          backgroundColor: movie.backdrop_path ? 'transparent' : '#0a0a0a'
+        }}
       />
 
       <div className="movie-detail-container">
         <div className="movie-detail-grid">
-          {/* Left: Poster + Watch Button */}
           <div className="movie-poster-section">
             <img
               src={movie.poster_path ? `${IMG_URL}${movie.poster_path}` : '/no-poster.jpg'}
@@ -101,25 +103,31 @@ const MovieDetail = () => {
               className="movie-poster"
             />
             <button className="btn-primary watch-btn" onClick={handleWatch}>
-              ▶ Watch Now
+              <FaPlay style={{ marginRight: '8px' }} /> Watch Now
             </button>
             {getTrailerKey() && (
               <button
                 className="btn-secondary trailer-btn"
                 onClick={() => window.open(`https://www.youtube.com/watch?v=${getTrailerKey()}`, '_blank')}
               >
-                📺 Watch Trailer
+                <FaYoutube style={{ marginRight: '8px', color: '#ff0000' }} /> Watch Trailer
               </button>
             )}
           </div>
 
-          {/* Right: Details */}
           <div className="movie-info-section">
             <h1 className="movie-title">{movie.title}</h1>
+
             <div className="movie-meta">
               <span>{movie.release_date?.substring(0, 4)}</span>
-              <span>⭐ {movie.vote_average?.toFixed(1)} / 10</span>
-              <span>🕐 {formatRuntime(movie.runtime)}</span>
+              <span>
+                <FaStar style={{ color: '#f5c518', marginRight: '4px' }} />
+                {movie.vote_average?.toFixed(1)} / 10
+              </span>
+              <span>
+                <FaClock style={{ marginRight: '4px' }} />
+                {formatRuntime(movie.runtime)}
+              </span>
             </div>
 
             <div className="movie-genres">
@@ -130,7 +138,6 @@ const MovieDetail = () => {
 
             <p className="movie-overview">{movie.overview}</p>
 
-            {/* Cast */}
             {cast.length > 0 && (
               <div className="movie-cast">
                 <h3>Cast</h3>
@@ -151,11 +158,15 @@ const MovieDetail = () => {
           </div>
         </div>
 
-        {/* You Might Also Like */}
         {similar.length > 0 && (
           <div className="movie-similar">
             <MovieCarousel
-              title="🎬 You Might Also Like"
+              title={
+                <span>
+                  <FaFilm style={{ color: '#e50914', marginRight: '8px' }} />
+                  You Might Also Like
+                </span>
+              }
               movies={similar}
               onMovieClick={(movie) => navigate(`/movie/${movie.id}`)}
             />

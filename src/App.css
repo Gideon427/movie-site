@@ -20,13 +20,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  flex-wrap: wrap;
+  gap: 12px;
+  height: auto;
+  padding: 12px 0;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -39,7 +43,9 @@
 
 .header-nav {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
 }
 
 .header-nav a {
@@ -52,6 +58,11 @@
 
 .header-nav a:hover {
   color: #fff;
+}
+
+.header-nav a {
+  white-space: normal;
+  word-break: break-word;
 }
 
 .header-right {
@@ -84,12 +95,27 @@
   color: #fff;
 }
 
+@media (max-width: 1024px) {
+  .header-left {
+    gap: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .header-nav {
-    display: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    padding-top: 8px;
   }
   
   .logo {
     font-size: 18px;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: flex-end;
   }
 }

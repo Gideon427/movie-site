@@ -1,0 +1,39 @@
+.page-page {
+  min-height: calc(100vh - 90px);
+  padding: 60px 0 40px;
+  color: #fff;
+}
+
+.page-header {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.page-header h1 {
+  font-size: 38px;
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+.page-header p {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.7;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .page-page {
+    padding: 40px 16px 30px;
+  }
+
+  .page-header h1 {
+    font-size: 30px;
+  }
+
+  .page-header p {
+    font-size: 16px;
+  }
+}

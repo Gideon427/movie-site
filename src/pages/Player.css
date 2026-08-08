@@ -10,6 +10,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
   padding: 12px 24px;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
@@ -34,10 +36,10 @@
   font-size: 18px;
   font-weight: 500;
   color: #fff;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 60%;
+  max-width: 100%;
 }
 
 .player-fullscreen {
@@ -92,12 +94,13 @@
   .player-header {
     padding: 8px 12px;
   }
-  
+
   .player-header h2 {
     font-size: 14px;
-    max-width: 40%;
+    max-width: 100%;
+    flex: 1;
   }
-  
+
   .player-upnext {
     display: none;
   }
