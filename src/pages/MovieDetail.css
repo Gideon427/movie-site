@@ -1,0 +1,194 @@
+.movie-detail {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 20px;
+}
+
+.movie-detail-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.3);
+  z-index: -1;
+}
+
+.movie-detail-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 20px 40px 60px;
+}
+
+.movie-detail-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Left: Poster Section */
+.movie-poster-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.movie-poster {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.watch-btn,
+.trailer-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+}
+
+/* Right: Info Section */
+.movie-info-section {
+  color: #fff;
+}
+
+.movie-title {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.movie-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+.movie-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.genre-tag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #ddd;
+}
+
+.movie-overview {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+/* Cast */
+.movie-cast h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.cast-list {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.cast-item {
+  flex-shrink: 0;
+  text-align: center;
+  width: 80px;
+}
+
+.cast-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 6px;
+}
+
+.cast-name {
+  font-size: 12px;
+  font-weight: 600;
+  display: block;
+  color: #fff;
+}
+
+.cast-character {
+  font-size: 11px;
+  color: #999;
+}
+
+/* Similar Movies */
+.movie-similar {
+  margin-top: 40px;
+}
+
+/* Loading */
+.movie-detail-loading {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-detail-error {
+  text-align: center;
+  padding: 60px 20px;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .movie-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .movie-poster-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .movie-poster {
+    width: 150px;
+    flex-shrink: 0;
+  }
+
+  .watch-btn,
+  .trailer-btn {
+    width: auto;
+    flex: 1;
+  }
+
+  .movie-title {
+    font-size: 28px;
+  }
+
+  .movie-detail-container {
+    padding: 20px 16px 40px;
+  }
+
+  .cast-item {
+    width: 60px;
+  }
+
+  .cast-item img {
+    width: 60px;
+    height: 60px;
+  }
+}

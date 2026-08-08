@@ -1,0 +1,56 @@
+.movie-carousel {
+  margin: 40px 0;
+}
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+.carousel-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.carousel-view-all {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.carousel-view-all:hover {
+  color: #e50914;
+}
+
+.carousel-swiper {
+  padding: 4px 0;
+}
+
+/* Swiper Navigation Customization */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff !important;
+  background: rgba(0,0,0,0.7);
+  width: 40px !important;
+  height: 100px !important;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(229, 9, 20, 0.8) !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px !important;
+  font-weight: 700;
+}
